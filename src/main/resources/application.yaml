@@ -1,0 +1,30 @@
+server:
+  port: 9000
+  tomcat:
+    relaxed-query-chars: '{,},[,]'
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.220:65/1?useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1q!1q!
+
+mybatis-plus:
+  type-enums-package: me.chn.yams.common.enums, me.chn.yams.module.*.enums
+  type-aliases-package: me.chn.yams.module.*.entity
+  mapper-locations:
+    - classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
+    - classpath:**/*mapper.xml
+
+actable:
+  table:
+    auto: update
+  model:
+    pack: me.chn.yams.module.**
+  database:
+    type: mysql
+#  index:
+#    prefix: 自己定义的索引前缀#该配置项不设置默认使用actable_idx_
+#  unique:
+#    prefix: 自己定义的唯一约束前缀#该配置项不设置默认使用actable_uni_
